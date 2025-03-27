@@ -1,0 +1,438 @@
+<html>
+<head>
+<title>Description of table columns</title>
+<style type="text/css">
+table.myTable { border-collapse: collapse; width: 100%; }
+table.myTable td, table.myTable th { border: 1px solid black; padding: 5px; text-align: left; }
+</style>
+</head>
+<body>
+<h3>Description of database table columns: h2r hotel</h3>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='UTF-8'>
+  
+  <title>Result Data</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <style>
+  * { 
+    margin: 0; 
+    padding: 0; 
+  }
+  body { 
+    font: 14px/1.4 Palatino, Serif; 
+  }
+  
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #9B9B9B; 
+    text-align: left; 
+  }
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    table, thead, tbody, th, td, tr { display: block; }
+    thead tr { position: absolute;top: -9999px;left: -9999px;}
+    tr { border: 1px solid #9B9B9B; }
+    td { border: none;border-bottom: 1px solid #9B9B9B; position: relative;padding-left: 50%; }
+    
+    td:before { position: absolute;top: 6px;left: 6px;width: 45%; padding-right: 10px; white-space: nowrap;}
+    
+    /*
+    Label the data
+    */
+td:nth-of-type(1):before { content: "Table"; }
+td:nth-of-type(2):before { content: "Column"; }
+td:nth-of-type(3):before { content: "Type"; }
+td:nth-of-type(4):before { content: "Size"; }
+td:nth-of-type(5):before { content: "O/F"; }
+td:nth-of-type(6):before { content: "Description"; }
+  }
+  
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px) {
+    body { 
+      padding: 0; 
+      margin: 0; 
+      width: 320px; }
+    }
+  
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    body { 
+      width: 495px; 
+    }
+  }
+  
+  </style>
+  <!--<![endif]-->
+<script type="text/javascript">
+
+function search(){
+  
+  var s = document.getElementById('search').value;
+
+  rows = document.getElementById('data').getElementsByTagName('TR');
+  for(var i=0;i<rows.length;i++){
+    if ( rows[i].textContent.indexOf(s)>0  || s.length==0 ) {
+	  rows[i].style.display ='';
+    } else {
+      rows[i].style.display ='none';
+    }
+  }
+}
+
+
+var timer;
+function delayedSearch() {
+	clearTimeout(timer);
+	console.log('delay-ing')
+    timer = setTimeout(function () {
+		console.log('delay-running')
+		search();
+    }, 500);
+  }</script>
+</head>
+
+<body>
+<div><input type="text" size="30" maxlength="1000" value="" id="search" onkeyup="delayedSearch();" /><input type="button" value="Go" onclick="lsearch();"/> </div>
+<table><thead><tr>	<th>Table</th>
+	<th>Column</th>
+	<th>Type</th>
+	<th>Size</th>
+	<th>O/F</th>
+	<th>Description</th>
+</tr></thead>
+<tbody id="data">
+
+	<tr>
+<td>ADDRESS</td>
+<td>ID_ADDRESS</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Unique identifier for the address</td>
+	</tr>
+	<tr>
+<td>ADDRESS</td>
+<td>ADDRESS_LINE</td>
+<td>VARCHAR2</td>
+<td align="right">500</td>
+<td>O</td>
+<td>Full address line, including street and number</td>
+	</tr>
+	<tr>
+<td>ADDRESS</td>
+<td>CITY</td>
+<td>VARCHAR2</td>
+<td align="right">50</td>
+<td>O</td>
+<td>City of the address</td>
+	</tr>
+	<tr>
+<td>ADDRESS</td>
+<td>ZIP_CODE</td>
+<td>VARCHAR2</td>
+<td align="right">10</td>
+<td>F</td>
+<td>Postal code of the address</td>
+	</tr>
+	<tr>
+<td>ADDRESS</td>
+<td>INTERNATIONAL_CODE</td>
+<td>VARCHAR2</td>
+<td align="right">4</td>
+<td>O</td>
+<td>International country code</td>
+	</tr>
+	<tr>
+<td>BED</td>
+<td>ID_BED</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Unique identifier for the bed configuration</td>
+	</tr>
+	<tr>
+<td>BED</td>
+<td>NB_DOUBLE_BED</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>F</td>
+<td>Number of double beds available</td>
+	</tr>
+	<tr>
+<td>BED</td>
+<td>NB_SIMPLE_BED</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>F</td>
+<td>Number of single beds available</td>
+	</tr>
+	<tr>
+<td>BED</td>
+<td>NB_BUNK_BED</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>F</td>
+<td>Number of bunk beds available</td>
+	</tr>
+	<tr>
+<td>CATEG_ROOM</td>
+<td>ID_CATEG</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Unique identifier for the room category</td>
+	</tr>
+	<tr>
+<td>CATEG_ROOM</td>
+<td>LABEL</td>
+<td>VARCHAR2</td>
+<td align="right">250</td>
+<td>O</td>
+<td>Category label (e.g., Single, Double, Suite)</td>
+	</tr>
+	<tr>
+<td>GUEST</td>
+<td>ID_GUEST</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Unique identifier for the guest</td>
+	</tr>
+	<tr>
+<td>GUEST</td>
+<td>LASTNAME</td>
+<td>VARCHAR2</td>
+<td align="right">50</td>
+<td>O</td>
+<td>Last name of the guest</td>
+	</tr>
+	<tr>
+<td>GUEST</td>
+<td>FIRSTNAME</td>
+<td>VARCHAR2</td>
+<td align="right">50</td>
+<td>O</td>
+<td>First name of the guest</td>
+	</tr>
+	<tr>
+<td>GUEST</td>
+<td>MAIL</td>
+<td>VARCHAR2</td>
+<td align="right">250</td>
+<td>O</td>
+<td>Email address of the guest</td>
+	</tr>
+	<tr>
+<td>GUEST</td>
+<td>BIRTHDATE</td>
+<td>VARCHAR2</td>
+<td align="right">250</td>
+<td>O</td>
+<td>Birthdate of the guest</td>
+	</tr>
+	<tr>
+<td>GUEST</td>
+<td>ADDRESS</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Reference to the guest's address (foreign key to ADDRESS)</td>
+	</tr>
+	<tr>
+<td>GUEST_RESERVATION</td>
+<td>ID_GUEST_RESERVATION</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Unique identifier for the guest reservation</td>
+	</tr>
+	<tr>
+<td>GUEST_RESERVATION</td>
+<td>TOTAL_PAID</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Total amount paid by the guest</td>
+	</tr>
+	<tr>
+<td>GUEST_RESERVATION</td>
+<td>HT_PAID</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Pre-tax amount paid</td>
+	</tr>
+	<tr>
+<td>GUEST_RESERVATION</td>
+<td>TAXES</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Amount of taxes applied to the reservation</td>
+	</tr>
+	<tr>
+<td>HOTEL</td>
+<td>ID_HOTEL</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Unique identifier for the hotel</td>
+	</tr>
+	<tr>
+<td>HOTEL</td>
+<td>NAME</td>
+<td>VARCHAR2</td>
+<td align="right">250</td>
+<td>O</td>
+<td>Name of the hotel</td>
+	</tr>
+	<tr>
+<td>HOTEL</td>
+<td>ADDRESS</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Reference to the hotel's address (foreign key to ADDRESS)</td>
+	</tr>
+	<tr>
+<td>HOTEL</td>
+<td>NB_STAGE</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Number of floors in the hotel</td>
+	</tr>
+	<tr>
+<td>HOTEL_RESERVATION</td>
+<td>ID_HOTEL_RESERVATION</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Unique identifier for the hotel reservation</td>
+	</tr>
+	<tr>
+<td>HOTEL_RESERVATION</td>
+<td>ARRIVAL_DATE</td>
+<td>VARCHAR2</td>
+<td align="right">10</td>
+<td>O</td>
+<td>Check-in date for the reservation</td>
+	</tr>
+	<tr>
+<td>HOTEL_RESERVATION</td>
+<td>DEPARTURE_DATE</td>
+<td>VARCHAR2</td>
+<td align="right">10</td>
+<td>O</td>
+<td>Check-out date for the reservation</td>
+	</tr>
+	<tr>
+<td>HOTEL_RESERVATION</td>
+<td>ROOM</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>room of the reservation</td>
+	</tr>
+	<tr>
+<td>HOTEL_RESERVATION</td>
+<td>GUEST_RESERVATION</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>guest of the reservation</td>
+	</tr>
+	<tr>
+<td>ROOM</td>
+<td>ID_ROOM</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Unique identifier for the room</td>
+	</tr>
+	<tr>
+<td>ROOM</td>
+<td>ROOM_NUMBER</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Room number within the hotel</td>
+	</tr>
+	<tr>
+<td>ROOM</td>
+<td>NB_PERSON</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Maximum number of occupants allowed in the room</td>
+	</tr>
+	<tr>
+<td>ROOM</td>
+<td>PRICE</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Price per night for the room</td>
+	</tr>
+	<tr>
+<td>ROOM</td>
+<td>BED</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Reference to the bed configuration (foreign key to BED)</td>
+	</tr>
+	<tr>
+<td>ROOM</td>
+<td>HOTEL</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Reference to the hotel the room belongs to (foreign key to HOTEL)</td>
+	</tr>
+	<tr>
+<td>ROOM</td>
+<td>CATEG</td>
+<td>NUMBER</td>
+<td align="right">22</td>
+<td>O</td>
+<td>Reference to the room category (foreign key to CATEG_ROOM)</td>
+	</tr>
+</tbody></table><!-- SQL:
+select  TABLE_NAME as "Table",
+        COLUMN_NAME as "Column",
+        DATA_TYPE as "Type",
+        DATA_LENGTH as "Size",
+        case 
+            when NULLABLE = 'N' then 'O'
+            when NULLABLE = 'Y' then 'F'
+        end "O/F",
+        COMMENTS as "Description"         
+from    USER_TAB_COLUMNS NATURAL JOIN USER_COL_COMMENTS
+order by TABLE_NAME, USER_TAB_COLUMNS.COLUMN_ID--></body></html>

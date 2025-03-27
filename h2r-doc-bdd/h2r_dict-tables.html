@@ -1,0 +1,162 @@
+<html>
+<head>
+<title>Table description</title>
+<style type="text/css">
+table.myTable { border-collapse: collapse; width: 100%; }
+table.myTable td, table.myTable th { border: 1px solid black; padding: 5px; text-align: left; }
+</style>
+</head>
+<body>
+<h3>Description of database relationships: h2r Hotel</h3>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='UTF-8'>
+  
+  <title>Result Data</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <style>
+  * { 
+    margin: 0; 
+    padding: 0; 
+  }
+  body { 
+    font: 14px/1.4 Palatino, Serif; 
+  }
+  
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #9B9B9B; 
+    text-align: left; 
+  }
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    table, thead, tbody, th, td, tr { display: block; }
+    thead tr { position: absolute;top: -9999px;left: -9999px;}
+    tr { border: 1px solid #9B9B9B; }
+    td { border: none;border-bottom: 1px solid #9B9B9B; position: relative;padding-left: 50%; }
+    
+    td:before { position: absolute;top: 6px;left: 6px;width: 45%; padding-right: 10px; white-space: nowrap;}
+    
+    /*
+    Label the data
+    */
+td:nth-of-type(1):before { content: "TableName"; }
+td:nth-of-type(2):before { content: "Description"; }
+  }
+  
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px) {
+    body { 
+      padding: 0; 
+      margin: 0; 
+      width: 320px; }
+    }
+  
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    body { 
+      width: 495px; 
+    }
+  }
+  
+  </style>
+  <!--<![endif]-->
+<script type="text/javascript">
+
+function search(){
+  
+  var s = document.getElementById('search').value;
+
+  rows = document.getElementById('data').getElementsByTagName('TR');
+  for(var i=0;i<rows.length;i++){
+    if ( rows[i].textContent.indexOf(s)>0  || s.length==0 ) {
+	  rows[i].style.display ='';
+    } else {
+      rows[i].style.display ='none';
+    }
+  }
+}
+
+
+var timer;
+function delayedSearch() {
+	clearTimeout(timer);
+	console.log('delay-ing')
+    timer = setTimeout(function () {
+		console.log('delay-running')
+		search();
+    }, 500);
+  }</script>
+</head>
+
+<body>
+<div><input type="text" size="30" maxlength="1000" value="" id="search" onkeyup="delayedSearch();" /><input type="button" value="Go" onclick="lsearch();"/> </div>
+<table><thead><tr>	<th>TableName</th>
+	<th>Description</th>
+</tr></thead>
+<tbody id="data">
+
+	<tr>
+<td>ADDRESS</td>
+<td>Postal address information, including city, zip code, and international code</td>
+	</tr>
+	<tr>
+<td>BED</td>
+<td>Details about bed configurations, including the number of double, single, and bunk beds</td>
+	</tr>
+	<tr>
+<td>CATEG_ROOM</td>
+<td>Room category, specifying different types of accommodations</td>
+	</tr>
+	<tr>
+<td>GUEST</td>
+<td>Guest information, including personal details and address reference</td>
+	</tr>
+	<tr>
+<td>GUEST_RESERVATION</td>
+<td>Guest reservation details, including total amount paid and taxes</td>
+	</tr>
+	<tr>
+<td>HOTEL</td>
+<td>Hotel information, including name, address, and number of floors</td>
+	</tr>
+	<tr>
+<td>HOTEL_RESERVATION</td>
+<td>Hotel reservation details, specifying arrival and departure dates</td>
+	</tr>
+	<tr>
+<td>ROOM</td>
+<td>Room details, including room number, capacity, price, bed configuration, hotel, and category reference</td>
+	</tr>
+</tbody></table><!-- SQL:
+SELECT 
+    table_name AS "Table Name", 
+    NVL(comments, 'No description available') AS "Description"
+FROM 
+    user_tab_comments
+ORDER BY 
+    table_name--></body></html>
